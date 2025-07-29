@@ -1,13 +1,22 @@
 import './App.css'
-import Login from './pages/login/Login'
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Home from './pages/home/Home';
+import Login from './pages/login/Login';
+import { UserProvider } from './contexts/UserContext';
 
 function App() {
 
   return (
-    <>
-      <Login />
-    </>
-  )
+    <UserProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Login />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/home" element={<Home />} />
+        </Routes>
+      </BrowserRouter>
+    </UserProvider>
+  );
 }
 
-export default App
+export default App;
